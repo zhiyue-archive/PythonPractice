@@ -15,14 +15,14 @@ def OnlyCharNum(s,oth=''):
 
 
 if __name__=='__main__':
-        myname=raw_input("è¯·è¾“å…¥å§“å\n")
-        keywordsnum=raw_input("è¯·è¾“å…¥å…³è”è¯ä¸ªæ•°\n")
+        myname=raw_input("ÇëÊäÈëĞÕÃû\n")
+        keywordsnum=raw_input("ÇëÊäÈë¹ØÁª´Ê¸öÊı\n")
         if int(keywordsnum) == 0:
                 keywords=[myname]
         else:
                 keywords=['']*int(keywordsnum) 
                 for k in range(int(keywordsnum)):
-                    keywords[k]=raw_input("è¯·è¾“å…¥å…³è”çš„å…³é”®å­—%d\n"%(k+1))
+                    keywords[k]=raw_input("ÇëÊäÈë¹ØÁªµÄ¹Ø¼ü×Ö%d\n"%(k+1))
         url1 = "http://www.baidu.com/s?wd="+myname
         response1 = urllib2.urlopen(url1)  
         content1 = response1.read() 
@@ -37,11 +37,11 @@ if __name__=='__main__':
         
         for i in range(int(page)):
                 url="http://www.baidu.com/s?wd="+myname+"&pn=%d"%(10*i)
-                print ('Pageï¼š%d/%d/%d'%((i+1),(int)(page),(keywordshownum)))
+                print ('Page£º%d/%d/%d'%((i+1),(int)(page),(keywordshownum)))
                 response = urllib2.urlopen(url)  
                 content =response.read() 
                 soup = BeautifulSoup(content)
-                sites = soup.find_all(class_="c-abstract")	#find_allè¿”å›çš„æ˜¯listï¼Œfindè¿”å›çš„æ˜¯obj
+                sites = soup.find_all(class_="c-abstract")	#find_all·µ»ØµÄÊÇlist£¬find·µ»ØµÄÊÇobj
                 pretext=' '.encode('gb18030')
                 for site in sites:
                         text = site.get_text().encode('gb18030')
